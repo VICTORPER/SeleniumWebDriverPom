@@ -1,25 +1,40 @@
 package co.com.miprimerproyecto.pages;
 
+import co.com.miprimerproyecto.base.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginPage {
+import java.util.List;
+
+public class LoginPage extends Base {
 
     //variables
     private By txtUser = By.name("userName");
     private By txtPass = By.name("password");
     private By btnLogin = By.name("submit");
     private By txtMensajeError = By.xpath("//span");
-    private WebDriver driver;
 
-    public LoginPage(WebDriver driver){
-        this.driver= driver;
-
-    }
-    public void iniciarSesion(String user, String pass)
+    public LoginPage (WebDriver driver)
     {
-        driver.findElement(txtUser).sendKeys(user);
-        driver.findElement(txtPass).sendKeys(pass);
-        driver.findElement(btnLogin).click();
+        super(driver);
     }
-}
+     public void SignIn()
+     {
+       if(isDisplayed(txtUser)){
+           type("qualityadmin",txtUser);
+           type("pass1",txtPass);
+           click(btnLogin);
+       }
+       else{
+          System.out.println("Usuario no encontrado");
+       }
+     }
+
+     public boolean isHomePageDisplayed()
+     {
+         return isDisplayed(txtMensajeError);
+     }
+
+    }

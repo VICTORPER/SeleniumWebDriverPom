@@ -1,0 +1,6 @@
+co/com/miprimerproyecto/base/Base.java
+ co.com.miprimerproyecto.base.Base
+co/com/miprimerproyecto/pages/LoginPage.java
+ co.com.miprimerproyecto.pages.LoginPage
+co/com/miprimerproyecto/tests/TestLogin.java
+ co.com.miprimerproyecto.tests.TestLogin

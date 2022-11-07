@@ -1,31 +1,40 @@
 package co.com.miprimerproyecto.tests;
 
 import co.com.miprimerproyecto.pages.LoginPage;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.yecht.Data;
 
-public class TestLogin {
+
+public class TestLogin{
     WebDriver driver;
-    String PATH_DRIVER= "./src/main/resources/driver/chromedriver";
-    String TYPE_DRIVER="webdriver.chrome.driver";
-    String url="http://demo.guru99.com/test/newtours/";
     LoginPage login;
-  @Before
-    public void setUp()
-  {
-      System.setProperty(TYPE_DRIVER,PATH_DRIVER);
-      driver = new ChromeDriver();
-      driver.manage().window().maximize();
-      driver.get(url);
-  }
 
-  @Test
-    public void testLogin()
-  {
-      login.iniciarSesion("victorperez105@gmail.com","12345");
-  }
+    @Before
+    public void setUp() throws Exception {
+        login= new LoginPage(driver);
+        driver=login.chromeDriverConnection();
+        login.visit("http://demo.guru99.com/test/newtours/");
+
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        //driver.quit();
+    }
+
+
+
+    @Test
+    public void signIn() throws InterruptedException {
+       login.SignIn();
+       Thread.sleep(2000);
+
+
+    }
+
 
 }
